@@ -157,9 +157,9 @@ We restart the ODU with `./run_odu.sh` (on the second terminal of the SCOPE BS) 
 
 ## Assignments
 
-# Assignment 1: Create a traffic classification xApp
+### Assignment 1: Create a traffic classification xApp
 
-# Assignment 2: Create a slicing control xApp
+### Assignment 2: Create a slicing control xApp
 
 ## Clean up
 

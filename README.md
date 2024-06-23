@@ -114,6 +114,60 @@ A successful setup of the BS's ODU will result in the following output.
   <img src="images/success_odu.png" width="400" height="300"/>
 </p>
 
+## Initialize a Sample xApp
+
+As a first step, on the SRN terminal with the ColO-RAN image, we type `docker logs e2term -f`, stop the process (`Ctrl + C`) and search (`Ctrl + F`) for the `gnb:` ID entry. An example is the following: `gnb:311-048-02010501`. We save the GNB ID (i.e., in a Text Editor). 
+
+After starting the near-RT RIC, and connecting the SCOPE base station to it, the sample xApp provided as part of ColO-RAN can be initialized. This can be done through the `setup-sample-xapp.sh` script by typing the following commands **on the ColO-RAN node** and the respective terminal. This script takes as input the ID of the RAN node the xApp subscribes to (e.g., the base station), which can be read in the logs of the ColO-RAN e2term Docker container, as described in the previous sections. It then builds the Docker image of the sample xApp, and starts it as a Docker container on the near-RT RIC.
+
+```
+cd ~/radio_code/colosseum-near-rt-ric/setup-scripts
+./setup-sample-xapp.sh <GNB ID>
+```
+For example: `./setup-sample-xapp.sh gnb:311-048-02010501`.
+
+After the xApp container (named, for instance sample-xapp-24) has been started, the xApp process can be run with the following command. By running this command, the xApp subscribes to the RAN node specified in the xApp build script above (through a RIC Subscription message), and triggers periodic reports (sent through RIC Indication messages) of RAN KPMs from the node.
+
+```
+docker exec -it sample-xapp-24 /home/sample-xapp/run_xapp.sh
+```
+ 
+ After performing these steps, the ColO-RAN sample xApp logs on file the KPMs received from the RAN node. Users can add custom intelligence (e.g., through AI/ML agents) to the xApp by modifying the template scripts in the `setup/sample-xapp/` directory, and rebuilding the xApp Docker image through the steps described in this section.
+
+## Change the ODU Report Timer
+In order to change the ODU report Timer, we first stop (`Ctrl + C`) the processes on both the DU side of the SCOPE BS and the near-RT RIC. Then, we can type the following commands on the SRN terminal with the ColO-RAN image:
+
+```
+ docker exec -it sample-xapp-24 /bin/bash
+ sed -i '442s/std::string event_def = "250"/std::string event_def = "1000"/' src/xapp.cc
+```
+With the above changes, we modify the timescale at which the BS's ODU reports the RAN's metrics back to the RIC. The initial granularity was set to 250 ms, and now we modify it to 1000 ms. Finally, we build the xApp's code, as following `./build_xapp.sh clean`.
+
+We restart the ODU with `./run_odu.sh` (on the second terminal of the SCOPE BS) and we restart the RIC with:
+```
+ cd ../sample-xapp
+ ./run_xapp.sh
+```
+
+## Generating traffic from the two UEs
+
+## Configuring Network Slicing
+
+## Data collection for AI training and data analytics
+
+## Assignments
+
+# Assignment 1: Create a traffic classification xApp
+
+# Assignment 2: Create a slicing control xApp
+
+## Clean up
+
+This concludes the Colosseum O-RAN assignment. After you are done with your experiments, it is a good practice to stop the RF scenario by running the following command from within one of the SRN containers and to terminate your reservation from the Colosseum portal:
+- `colosseumcli rf stop`
+- In all terminals, close your ssh connections by typing: `exit`
+- Access the Colosseum portal and delete your reservation.
+
 
 # References
 

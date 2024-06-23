@@ -9,10 +9,14 @@ In this tutorial, you will learn how to (i) access and make a reservation on Col
 
 We have pre-allocated 10 accounts exclusively dedicated to the school. Each account follows the nomenclature `lssa<X>`, where `<X>` is an integer number from 1 to 10. The account for team 5 is `lssa5`. Please take notice of the team number assigned to you, it will be necessary to access your team account on Colosseum. The password for all team accounts is `ChangeMe`. If you do not know which team number has been assigned to you, please ask one of the instructors.
 
+NOTE: In some portions of the tutorial (e.g., when asked to login into the VPN, a couple of lines below), your credentials will also be referred to as LDAP username and password.
+
+<code style="color : red">Freshdesk needs email address to login. How do we make that happen?</code>
+
 ## Make a reservation on Colosseum
 
 1. Connect to Colosseum VPN (instructions [here](https://colosseumneu.freshdesk.com/support/solutions/articles/61000285824-cisco-anyconnect-remote-vpn-access)) and login to [Colosseum website](https://experiments.colosseum.net).
-2. Make a reservation with three SRNs (see instructions on [Making a Reservation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253463-making-a-reservation-interactive-and-batch-mode-)). The order of the SRNs shall be the following: for the first two SRNs choose the `scope-with-e2` image, while for the third choose the `coloran-near-rt-ric-prebuilt` image. It is noted that the RIC should be allocated to the last SRN in the Colosseum reservation.
+2. Make a reservation with four SRNs (see instructions on [Making a Reservation](https://colosseumneu.freshdesk.com/en/support/solutions/articles/61000253463-making-a-reservation-interactive-and-batch-mode-)). The order of the SRNs shall be the following: for the first three SRNs choose the `scope-with-e2` image, while for the forth choose the `coloran-near-rt-ric-prebuilt` image. It is noted that the RIC should be allocated to the last SRN in the Colosseum reservation.
 
     <p align="center">
       <img src="images/order-SRNs.png" width="350" />

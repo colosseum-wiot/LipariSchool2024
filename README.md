@@ -53,6 +53,12 @@ python3 scope_start.py --config-file radio_interactive.conf
 tmux a
 ```
 
+Once the UEs connect to the BS, they will automatically start exchanging data through iPerf. You can optionally stop the iPerf session automatically started by the UEs and run iPerf manually. The IP of the BS should be `172.16.0.1`, and the UEs should have IP addresses `172.16.0.2` and `172.16.0.3`. After starting, the BS should automatically instantiate iPerf servers in background that are listening on ports `5202` and `5203`.
+
+```
+NEED TO CHECK PORT NUMBERS
+```
+
 
 ## Start the ColO-RAN Near-RT RIC
 
@@ -164,7 +170,6 @@ We restart the ODU with `./run_odu.sh` (on the second terminal of the SCOPE BS) 
  ./run_xapp.sh
 ```
 
-## Generating traffic from the two UEs
 
 ## Configuring Network Slicing
 

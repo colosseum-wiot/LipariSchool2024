@@ -46,3 +46,6 @@ Similarly, the scheduling can be tuned among the round-robin (corresponding to p
 
 
 ## Data collection for AI training and data analytics
+
+KPIs are periodically (e.g., every 250 ms) written on file on this [directory](https://github.com/wineslab/colosseum-scope/tree/main/radio_code/scope_config/metrics/csv), one file per user, named `<ue_imsi>_metrics.csv`, where `ue_imsi` is the IMSI of the UE. Valid UE IMSI for this exercise should be `001010123456002` and `001010123456003`, you can ignore files for which the IMSI value only has 2 or 3 digits. The E2 agent of the O-DU peridically reads user KPIs from these files and sends them to the E2 termination of the near-real-time RIC, and eventually to the xApp.
+

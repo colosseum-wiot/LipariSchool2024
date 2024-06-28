@@ -38,7 +38,11 @@ Now that we have instantiated a cellular network on Colosseum, we will exchange 
         - 5 Mbps: `iperf3 -c 172.16.0.X -u -b 5M`
 
 
+## Configuring Network Slicing and Scheduling
 
-## Configuring Network Slicing
+The slicing configuration specified in the [radio_interactive.conf](radio_interactive.conf) is loaded at the BS start-up time. This is passed in the form of `{slice_num: [lowest_allowed_rbg, highest_allowed_rbg], ...}`` (inclusive). E.g., `{0: [0, 3], 1: [5, 7]}`` assigns RBGs 0-3 to slice 0 and 5-7 to slice 1. The SCOPE APIs then write the passed configuration on configuration files (e.g., on this [file](https://github.com/wineslab/colosseum-scope/blob/main/radio_code/scope_config/slicing/slice_allocation_mask_tenant_0.txt) for slice 0), one per each slice. These slicing parameters are periodically reloaded from file. The frequency at which they are reloaded can be modified through the variable `line_change_frequency_ms` in `../radio_code/srsLTE/srsenb/src/stack/mac/scheduler_metric.cc`, function `dl_metric_rr::sched_users`. In each of these files, slicing is specified as a 0-1 bitstring, where a `0` means the RBG cannot be used, and `1` that if can be used for transmissions. As an example, the string `1111110000000000000000000` would allocate RBGs 0-5 to the slice.
+
+Similarly, the scheduling can be tuned among the round-robin (corresponding to policy `0`), waterfilling (`1`), and proportional fairness (`2`) scheduling policies. They are written on this [file](https://github.com/wineslab/colosseum-scope/blob/main/radio_code/scope_config/slicing/slice_scheduling_policy.txt), one entry per slice. This file is also reloaded periodically. If slicing is **not** used, instead, the global slicing policy can be set in this [file](https://github.com/wineslab/colosseum-scope/blob/main/radio_code/scope_config/scope_cfg.txt).
+
 
 ## Data collection for AI training and data analytics

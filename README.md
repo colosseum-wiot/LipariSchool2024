@@ -32,9 +32,20 @@ NOTE: In some portions of the tutorial (e.g., when asked to login into the VPN, 
 Scenario Start Time is 22:30:45
 ```
 
-```
-TODO: reference to other readme files
-```
+
+## Base station and UEs
+
+Instructions on how to run the base stations and UEs can be found [here](./SCOPE.md)
+
+
+## Near-real-time RIC and xApp
+
+Instructions on how to run the near-real-time RIC and xApp can be found [here](./RIC.md)
+
+
+## Assignments
+
+The assignments can be found [here](./ASSIGNMENT.md)
 
 
 # References

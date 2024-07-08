@@ -29,7 +29,7 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
     - The variable `data_sck` stores the E2 data (e.g., KPMs) you want to monitor to take decisions
     - The variables follow this preset:
       - ```
-        metric_dict = {"dl_buffer [bytes]": 1, "tx_brate downlink [Mbps]": 2, "ratio_req_granted": 3, "slice_id": 0, "slice_prb": 4}
+        metric_dict = {"slice_id": 0, "dl_buffer [bytes]": 1, "tx_brate downlink [Mbps]": 2, "ratio_req_granted": 3, "slice_prb": 4}
         ```
   - To change the number of PRBs allocated to each UE you will use the following piece of code inside the xApp code. 
     - ```

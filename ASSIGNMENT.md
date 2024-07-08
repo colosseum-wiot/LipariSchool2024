@@ -14,6 +14,7 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
   - The PRB adjustments should be incremental, with increases or decreases of +3 or -3 (i.e. 1 Resource Block Group (RBG)) at a time. The change should be made at regular intervals (e.g. every 5 s).
     - **NOTE:** Scheduling operates on a Resource Block Group (RBG) basis. You can allocate PRBs in groups of RBGs. In our case, `1 RBG = 3 PRBs`. Since we have 50 PRBs available, you will have 17 RBGs.   
 - **Details**:
+  - Your objective is to read throughput measurements for each UE (e.g., `tx_brate downlink [Mbps]` column in the `*_metrics.csv` file), and adjust the number of PRBs to meet the minimum rate requirement. 
   - To read the KPMs streamed by the gNB to the xApp, you will use the following piece of code:
     - ```
       control_sck = open_control_socket(4200) # Open E2 socket
@@ -26,6 +27,10 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
               logging.info('Received data: ' + repr(data_sck))
       ```
     - The variable `data_sck` stores the E2 data (e.g., KPMs) you want to monitor to take decisions
+    - The variables follow this preset:
+      - ```
+        metric_dict = {"dl_buffer [bytes]": 1, "tx_brate downlink [Mbps]": 2, "ratio_req_granted": 3, "slice_id": 0, "slice_prb": 4}
+        ```
   - To change the number of PRBs allocated to each UE you will use the following piece of code inside the xApp code. 
     - ```
       control_msg = '0,1\n10,7' # 
@@ -33,8 +38,6 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
       send_socket(control_sck, control_msg)
       ```
     - The code above will allocate 10 RGBs to UE associated to slice 0, and 7 to UE associated to slice 1 
-      
-  - Your objective is to read throughput measurements for each UE (e.g., `tx_brate downlink [Mbps]` column in the `*_metrics.csv` file), and adjust the number of PRBs to meet the minimum rate requirement. 
 
 ## Assignment 2: Create a Traffic Classification xApp
 
@@ -50,5 +53,19 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
   - The xApp should be capable of differentiating between two types of traffic: low throughput and high throughput.
   - The classification should be adaptive, considering the variable nature of `iperf` traffic.
   - To read the KPMs streamed by the gNB to the xApp, you will use the
-    - `[TODO: add details on how to read KPMs in the xApp]`
+    - ```
+      control_sck = open_control_socket(4200) # Open E2 socket
+      while True:
+          data_sck = receive_from_socket(control_sck) # Receive E2 data
+          if len(data_sck) <= 0:
+              logging.info('No valid data was received')
+              continue;
+          else:
+              logging.info('Received data: ' + repr(data_sck))
+      ```
+    - The variable `data_sck` stores the E2 data (e.g., KPMs) you want to monitor to take decisions
+    - The variables follow this preset:
+      - ```
+        metric_dict = {"dl_buffer [bytes]": 1, "tx_brate downlink [Mbps]": 2, "ratio_req_granted": 3, "slice_id": 0, "slice_prb": 4}
+        ```
   - You are free to decide how to visualize the output of the classification output.

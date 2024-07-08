@@ -5,7 +5,7 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
 ## Assignment 1: Create a Slicing Control xApp
 
 <p align="center">
-  <img src="images/slicing_xapp.png"height="300"/>
+  <img src="images/slicing_xapp.png" height="300"/>
 </p>
 
 - **Objective**: Develop an xApp with basic PRB increase/decrease policy to satisfy a certain minimum throughput.

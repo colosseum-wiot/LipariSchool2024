@@ -5,7 +5,7 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
 ## Assignment 1: Create a Slicing Control xApp
 
 <p align="center">
-  <img src="images/slicing_xapp.png" width="400" height="300"/>
+  <img src="images/slicing_xapp.png"height="300"/>
 </p>
 
 - **Objective**: Develop an xApp with basic PRB increase/decrease policy to satisfy a certain minimum throughput.
@@ -22,7 +22,7 @@ You can use the 'sample xApp' available in [this repository](https://github.com/
 ## Assignment 2: Create a Traffic Classification xApp
 
 <p align="center">
-  <img src="images/traffic_xapp.png" width="400" height="300"/>
+  <img src="images/traffic_xapp.png" height="300"/>
 </p>
 
 - **Objective**: Develop an xApp that receives E2 data and classifies the type of traffic.

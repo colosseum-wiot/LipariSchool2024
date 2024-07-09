@@ -1,6 +1,30 @@
 # Base station and UEs
 
-As a first step, set the parameters of the `radio_interactive.conf` **on ALL `scope` nodes (gNB and the two UEs)** as those of this [file](radio_interactive.conf) (you can use `scp` to copy the file, or `nano/vim` to edit the file). 
+As a first step, set the parameters of the `radio_interactive.conf` **on ALL `scope` nodes (gNB and the two UEs)** as those of this [file](radio_interactive.conf) (you can use `scp` to copy the file, or `nano/vim` to edit the file). Or, you can use this code below:
+
+```
+cat > /root/radio_api/raio_interactive.conf << EOF
+{
+  "capture-pkts": "False",
+  "colosseumcli": "True",
+  "generic-testbed": "False",
+  "iperf": "False",
+  "users-bs": "3",
+  "write-config-parameters": "True",
+  "network-slicing": "True",
+  "global-scheduling-policy": "0",
+  "slice-scheduling-policy": "[0, 0]",
+  "tenant-number": "2",
+  "slice-allocation": "{0: [0, 8], 1: [9, 16]}",
+  "slice-users": "{0: [2], 1: [3]}",
+  "custom-ue-slice": "True",
+  "force-dl-modulation": "False",
+  "heuristic-params": "{'buffer_thresh_bytes': [1000, 2000], 'thr_thresh_mbps': [0.25, 0.75]}",
+  "bs-config": "{'dl_freq': 980000000, 'ul_freq': 1020000000, 'n_prb': 50}",
+  "ue-config": "{'dl_freq': 980000000, 'ul_freq': 1020000000, 'force_ul_amplitude': 0.9}"
+}
+EOF
+```
 
 ## Start the SCOPE Base Station
 

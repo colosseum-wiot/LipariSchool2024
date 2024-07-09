@@ -2,7 +2,9 @@
 
 ## Start the SCOPE Base Station
 
-As a first step, on one of the two BS terminals **we start the SCOPE base station on the first node of the reservation** and pass the configuration of the base station through the `radio_interactive.conf` file located in the `~/radio_api` directory. Set the parameters of the `radio_interactive.conf` as those of this [file](radio_interactive.conf). Note that the base station application will only start if this is the first node in the reservation, otherwise a UE application will start. In the SCOPE node, type the following commands which will take care of starting the base station and the core network applications in a `tmux` session (a cheatsheet for `tmux` can be found [here](https://www.stationx.net/tmux-cheat-sheet/)).
+As a first step, set the parameters of the `radio_interactive.conf` as those of this [file](radio_interactive.conf) (you can use `scp` to copy the file, or `nano/vim` to edit the file). 
+
+On one of the two BS terminals **we start the SCOPE base station on the first node of the reservation** and pass the configuration of the base station through the `radio_interactive.conf` file located in the `~/radio_api` directory.  Note that the base station application will only start if this is the first node in the reservation, otherwise a UE application will start. In the SCOPE node, type the following commands which will take care of starting the base station and the core network applications in a `tmux` session (a cheatsheet for `tmux` can be found [here](https://www.stationx.net/tmux-cheat-sheet/)).
 
 ```bash
 cd radio_api/

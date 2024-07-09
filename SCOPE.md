@@ -1,6 +1,6 @@
 # Base station and UEs
 
-As a first step, set the parameters of the `radio_interactive.conf` **on ALL `scope` nodes (gNB and the two UEs)** as those of this [file](radio_interactive.conf) (you can use `scp` to copy the file, or `nano/vim` to edit the file). Or, you can use this code below:
+As a first step, set the parameters of the `radio_interactive.conf` _on ALL `scope` nodes (gNB and the two UEs)_ as those of this [file](radio_interactive.conf) (you can use `scp` to copy the file, or `nano/vim` to edit the file). Or, you can use this code below:
 
 ```
 cat > /root/radio_api/radio_interactive.conf << EOF
@@ -73,5 +73,5 @@ Similarly, the scheduling can be tuned among the round-robin (corresponding to p
 
 ## Data collection for AI training and data analytics
 
-KPIs are periodically (e.g., every 250 ms) written on file in the folder `~/radio_code/scope_config/metrics/csv` (an example is shown here [directory](https://github.com/wineslab/colosseum-scope/tree/main/radio_code/scope_config/metrics/csv)), one file per user, named `<ue_imsi>_metrics.csv`, where `ue_imsi` is the IMSI of the UE. Valid UE IMSI for this exercise should be `001010123456002` and `001010123456003`, you can ignore files for which the IMSI value only has 2 or 3 digits. The E2 agent of the O-DU peridically reads user KPIs from these files and sends them to the E2 termination of the near-real-time RIC, and eventually to the xApp.
+KPIs are periodically (e.g., every 250 ms) written on file in the folder `~/radio_code/scope_config/metrics/csv` for the _gNB only_ (an example is shown here [directory](https://github.com/wineslab/colosseum-scope/tree/main/radio_code/scope_config/metrics/csv)), one file per user, named `<ue_imsi>_metrics.csv`, where `ue_imsi` is the IMSI of the UE. Valid UE IMSI for this exercise should be `001010123456002` and `001010123456003`, you can ignore files for which the IMSI value only has 2 or 3 digits. The E2 agent of the O-DU peridically reads user KPIs from these files and sends them to the E2 termination of the near-real-time RIC, and eventually to the xApp.
 

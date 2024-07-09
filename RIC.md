@@ -92,7 +92,7 @@ docker exec -it sample-xapp-24 /home/sample-xapp/run_xapp.sh
  After performing these steps, the ColO-RAN sample xApp logs on file the KPMs received from the RAN node. Users can add custom intelligence (e.g., through AI/ML agents) to the xApp by modifying the template scripts in the `setup/sample-xapp/` directory, deleting the existing xApp Docker image, and rebuilding it through the steps described in this section.
 
 
-## Change the ODU Report Timer
+## Change the ODU Report Timer (OPTIONAL)
 
 To change the O-DU report timer, we first stop (`Ctrl + C`) the processes on both the DU side of the SCOPE BS and the near-RT RIC. Then, we can type the following commands on the SRN terminal with the ColO-RAN image:
 

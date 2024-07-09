@@ -3,7 +3,7 @@
 As a first step, set the parameters of the `radio_interactive.conf` **on ALL `scope` nodes (gNB and the two UEs)** as those of this [file](radio_interactive.conf) (you can use `scp` to copy the file, or `nano/vim` to edit the file). Or, you can use this code below:
 
 ```
-cat > /root/radio_api/raio_interactive.conf << EOF
+cat > /root/radio_api/radio_interactive.conf << EOF
 {
   "capture-pkts": "False",
   "colosseumcli": "True",

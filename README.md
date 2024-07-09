@@ -1,7 +1,7 @@
 # LipariSchool2024
 Tutorial for end-to-end O-RAN deployment and AI development for the Lipari Summer School 2024.
 
-**IMPORTANT:** Since WiFi might drop mid-experiment, you **MUST** use `tmux` extensively as any drop in the `ssh` connection will result in scripts getting stopped, and need to redo most steps. So, do a favour to yourself and use `tmux`. 
+**EXTREMELY IMPORTANT:** Since WiFi might drop mid-experiment, you **MUST** use `tmux` extensively as any drop in the `ssh` connection will result in scripts getting stopped, and need to redo most steps. So, do a favour to yourself and use `tmux`. 
 
 # O-RAN Tutorial Assignment
 
